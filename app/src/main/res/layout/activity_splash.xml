@@ -8,8 +8,10 @@
    <ImageView
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:src="@drawable/tbs_logo"
+       android:src="@drawable/asian_logo"
        android:layout_centerInParent="true"
+       android:layout_marginLeft="10dp"
+       android:layout_marginRight="10dp"
        />
 
 

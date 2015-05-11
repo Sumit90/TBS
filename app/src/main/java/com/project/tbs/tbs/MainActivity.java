@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -13,36 +14,33 @@ import android.widget.TextView;
  */
 public class MainActivity extends Activity {
 
-    TextView signUp;
-    TextView skip;
+   Button addColour;
+   Button selectColour;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        signUp = (TextView)findViewById(R.id.signup);
-        skip = (TextView)findViewById(R.id.skip);
+        addColour=(Button)findViewById(R.id.add_button);
+        selectColour=(Button)findViewById(R.id.select_button);
 
-        String myString=new String("Sign Up");
-        SpannableString content = new SpannableString(myString);
-        content.setSpan(new UnderlineSpan(), 0, myString.length(), 0);
-        signUp.setText(content);
-
-        String myString1=new String("Skip");
-        SpannableString content1 = new SpannableString(myString1);
-        content1.setSpan(new UnderlineSpan(), 0, myString1.length(), 0);
-        skip.setText(content1);
-
-        signUp.setOnClickListener(new View.OnClickListener() {
+        addColour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent l_intent=new Intent(MainActivity.this,SignUp.class);
+                Intent l_intent=new Intent(MainActivity.this,AddActivity.class);
                 startActivity(l_intent);
 
             }
         });
 
+        selectColour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 }

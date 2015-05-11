@@ -3,76 +3,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
+    android:background="#FFCCFF"
     >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:text="Login"
-        android:layout_marginTop="20dp"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Your Email id"
-        android:password="true"
-        android:layout_marginTop="25dp"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="*******"
-        android:layout_marginTop="25dp"
-        android:password="true"
-        />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="#FF6600"
-        android:textColor="#FFFFFF"
-        />
-
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         >
 
-        <TextView
-            android:id="@+id/signup"
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="abc"
-            android:textSize="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/asian_logo"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+
+        <Button
+            android:id="@+id/add_button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="|"
-            android:textSize="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:text="Add Your Color"
+            android:background="#FFFF66"
             />
 
-        <TextView
-            android:id="@+id/skip"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/select_button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="abc"
-            android:textSize="20dp"
+            android:text="Select Your Color"
+            android:layout_marginTop="30dp"
+            android:background="#FFFF66"
+            />
+
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search Your Color"
+            android:layout_marginTop="30dp"
+            android:background="#FFFF66"
             />
 
         </LinearLayout>
