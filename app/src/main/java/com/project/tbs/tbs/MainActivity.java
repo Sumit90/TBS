@@ -16,6 +16,7 @@ public class MainActivity extends Activity {
 
    Button addColour;
    Button selectColour;
+   Button searchColour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends Activity {
 
         addColour=(Button)findViewById(R.id.add_button);
         selectColour=(Button)findViewById(R.id.select_button);
+        searchColour=(Button)findViewById(R.id.search_button);
 
         addColour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +40,17 @@ public class MainActivity extends Activity {
         selectColour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent l_intent=new Intent(MainActivity.this,ShowListActivity.class);
+                startActivity(l_intent);
+
+            }
+        });
+
+        searchColour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent l_intent=new Intent(MainActivity.this,SearchActivity.class);
+                startActivity(l_intent);
 
             }
         });

@@ -28,8 +28,8 @@ public class MyDatabase extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE = "create table "
             + TABLE_COLOURS + "(" + COLUMN_CODE
             + " text primary key, " + COLUMN_NAME
-            + " text, " + COLUMN_RGB
-            + " text, " + COLUMN_HEX
+            + " text not null, " + COLUMN_RGB
+            + " text not null, " + COLUMN_HEX
             + " text not null);";
 
     public MyDatabase(Context context) {
@@ -50,31 +50,62 @@ public class MyDatabase extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addColour(ColourPOJO colour) {
+    public boolean addColour(ColourPOJO colour) {
+
+        boolean succes=false;
         SQLiteDatabase db = this.getWritableDatabase();
+        try {
 
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_CODE, colour.getColourCode());
-        values.put(COLUMN_NAME, colour.getColourName());
-        values.put(COLUMN_RGB, colour.getColourRGB());
-        values.put(COLUMN_HEX, colour.getColourHex());
 
-        // Inserting Row
-        db.insert(TABLE_COLOURS, null, values);
-        db.close(); // Closing database connection
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_CODE, colour.getColourCode());
+            values.put(COLUMN_NAME, colour.getColourName());
+            values.put(COLUMN_RGB, colour.getColourRGB());
+            values.put(COLUMN_HEX, colour.getColourHex());
+
+            // Inserting Row
+            long result=db.insert(TABLE_COLOURS, null, values);
+
+            if(result>0)
+                succes=true;
+        }
+        catch (Exception e)
+        {
+            succes=false;
+
+        }
+        finally {
+            if(db.isOpen())
+            {
+                db.close();
+            }
+        }
+        return succes;
+
     }
 
     public ColourPOJO getColour(String colourCode) {
         SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(TABLE_COLOURS, new String[] { COLUMN_CODE
-                         }, COLUMN_CODE + "=?",
+        ColourPOJO colour=null;
+        Cursor cursor = db.query(TABLE_COLOURS, new String[] { COLUMN_CODE,
+                 COLUMN_NAME,COLUMN_RGB,COLUMN_HEX }, COLUMN_CODE + "=?",
                 new String[] { colourCode }, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
 
-        ColourPOJO colour = new ColourPOJO(cursor.getString(0),
-                cursor.getString(1), cursor.getString(2), cursor.getString(3));
+
+
+        if (cursor != null) {
+
+            if(cursor.moveToFirst()) {
+
+                colour = new ColourPOJO(cursor.getString(0),
+                        cursor.getString(1), cursor.getString(2), cursor.getString(3));
+            }
+        }
+
+        if(db.isOpen())
+        {
+            db.close();
+        }
 
         return colour;
     }
@@ -95,7 +126,7 @@ public class MyDatabase extends SQLiteOpenHelper {
                 colour.setColourCode(cursor.getString(0));
                 colour.setColourName(cursor.getString(1));
                 colour.setColourRGB(cursor.getString(2));
-                colour.setColourHex(cursor.getString(2));
+                colour.setColourHex(cursor.getString(3));
                 // Adding contact to list
                 colourList.add(colour);
             } while (cursor.moveToNext());

@@ -5,10 +5,10 @@ package com.project.tbs.tbs;
  */
 public class ColourPOJO {
 
-    String colourCode;
-    String colourName;
-    String colourRGB;
-    String colourHex;
+    private String colourCode;
+    private String colourName;
+    private String colourRGB;
+    private String colourHex;
 
     public ColourPOJO()
     {
